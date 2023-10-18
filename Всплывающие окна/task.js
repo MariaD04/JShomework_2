@@ -1,17 +1,16 @@
-const modal_main = document.querySelector('#modal_main');
-const modal_success = document.querySelector('#modal_success');
-const btn_danger = document.querySelector('.btn_danger');
-const modal__close = document.querySelectorAll('.modal__close_times');
-const array = Array.from(modal__close);
+const modalMain = document.querySelector('#modal_main');
+const modalSuccess = document.querySelector('#modal_success');
+const btnDanger = document.querySelector('.btn_danger');
+const modalClose =  Array.from(document.querySelectorAll('.modal__close_times'));
 
-array.forEach((button) => {
+modalClose.forEach((button) => {
     button.addEventListener('click', () => {
-        modal_main.classList.remove('modal_active');
-        modal_success.classList.remove('modal_active');
+        modalMain.classList.remove('modal_active');
+        modalSuccess.classList.remove('modal_active');
     })
 });
 
-btn_danger.addEventListener('click', () => {
-    modal_main.classList.remove('modal_active');
-    modal_success.classList.add('modal_active');
+btnDanger.addEventListener('click', () => {
+    modalMain.classList.remove('modal_active');
+    modalSuccess.classList.add('modal_active');
 })
