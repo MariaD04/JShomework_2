@@ -1,31 +1,21 @@
 const slider = document.querySelector('.slider__items');
 const slides = Array.from(slider.querySelectorAll('.slider__item'));
-const prev_button = document.querySelector('.slider__arrow');
-const next_button = document.querySelector('.slider__arrow_next');
-const counter = slides.length;
-let slide_index = 0;
+const prevButton = document.querySelector('.slider__arrow');
+const nextButton = document.querySelector('.slider__arrow_next');
 
-function updateslider() {
-  slides.forEach((slide, index) => {
-    if (index === slide_index) {
-      slide.classList.add('slider__item_active');
-    } else {
-      slide.classList.remove('slider__item_active');;
-    }
-  });
+function nextSlide() {
+  let index = slides.findIndex((slide) => slide.classList.contains('slider__item_active'));
+  slides[index].classList.remove('slider__item_active');
+  index < slides.length - 1 ? index++ : index = 0;
+  slides[index].classList.add('slider__item_active');
 }
 
-function previousslide() {
-    slide_index = (slide_index - 1 + counter ) % counter ;
-    updateslider();
+function previousSlide() {
+  let index = slides.findIndex((slide) => slide.classList.contains('slider__item_active'));
+  slides[index].classList.remove('slider__item_active');
+  index > 0 ? index-- : index = slides.length - 1;
+  slides[index].classList.add('slider__item_active');
 }
 
-  function nextslide() {
-    slide_index = (slide_index + 1) % counter;
-    updateslider();
-}
-
-next_button.addEventListener('click', nextslide);
-prev_button.addEventListener('click', previousslide);
-
-updateslider();
+nextButton.addEventListener('click', nextSlide);
+prevButton.addEventListener('click', previousSlide);
