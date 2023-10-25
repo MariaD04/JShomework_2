@@ -1,6 +1,6 @@
 const submenuAll = Array.from(document.querySelectorAll('.menu_sub'));
 
-submenuAll.forEach ( submenu => {
+submenuAll.forEach (submenu => {
   const menuItem = submenu.closest('.menu__item');
   const menuLink = menuItem.querySelector('.menu__link');
   menuLink.addEventListener('click', (event) => {
